@@ -28,6 +28,10 @@
     function tva($prix){
         return $prix/1.2;
     };
+
+    function addLine(){
+
+    };
 ?>
 
 <html lang="en">
@@ -60,7 +64,7 @@
                                 if ($produit['prix_produit'] <= 12) {
                                     echo "class = 'green'";
                                 }else{
-                                    echo "class = 'red'";
+                                    echo "class = 'blue'";
                                 };
                             ?>
                         >
