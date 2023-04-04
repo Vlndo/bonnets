@@ -1,0 +1,16 @@
+body,
+html {
+    width: 50%;
+    margin: auto;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table,
+tr,
+th,
+td {
+    border: 1px solid black;
+}
