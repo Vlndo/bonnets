@@ -24,6 +24,10 @@
             'description_produit'   =>  $description
         ],
     ];
+
+    function tva($prix){
+        return $prix/1.2;
+    };
 ?>
 
 <html lang="en">
@@ -38,7 +42,8 @@
     <table>
         <tr>
             <th>Produits</th>
-            <th>Prix</th>
+            <th>Prix HT</th>
+            <th>Prix TTC</th>
             <th>Descripion</th>
         </tr>
             <?php
@@ -61,6 +66,11 @@
                         >
             <?php
                             echo $produit['prix_produit'] . " €";
+            ?>
+                        </td>
+                        <td>
+            <?php
+                            echo number_format(tva($produit['prix_produit'])) . " €";
             ?>
                         </td>
                         <td>
