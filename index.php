@@ -50,7 +50,15 @@
                             echo $produit['nom_produit'];
             ?>
                         </td>
-                        <td>
+                        <td 
+                            <?php 
+                                if ($produit['prix_produit'] <= 12) {
+                                    echo "class = 'green'";
+                                }else{
+                                    echo "class = 'red'";
+                                };
+                            ?>
+                        >
             <?php
                             echo $produit['prix_produit'] . " €";
             ?>
