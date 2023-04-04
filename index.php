@@ -24,6 +24,14 @@
             'description_produit'   =>  $description
         ],
     ];
+
+    function tva($prix){
+        return $prix/1.2;
+    };
+
+    function addLine(){
+
+    };
 ?>
 
 <html lang="en">
@@ -38,7 +46,8 @@
     <table>
         <tr>
             <th>Produits</th>
-            <th>Prix</th>
+            <th>Prix HT</th>
+            <th>Prix TTC</th>
             <th>Descripion</th>
         </tr>
             <?php
@@ -55,12 +64,17 @@
                                 if ($produit['prix_produit'] <= 12) {
                                     echo "class = 'green'";
                                 }else{
-                                    echo "class = 'red'";
+                                    echo "class = 'blue'";
                                 };
                             ?>
                         >
             <?php
                             echo $produit['prix_produit'] . " €";
+            ?>
+                        </td>
+                        <td>
+            <?php
+                            echo number_format(tva($produit['prix_produit'])) . " €";
             ?>
                         </td>
                         <td>
