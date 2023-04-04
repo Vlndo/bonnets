@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 
 <?php
+    $description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a leo diam. Quisque lorem orci, accumsan quis dolor sed, gravida.';
     $produits = [
-        'Bonnet en laine',
-        'Bonnet en laine bio',
-        'Bonnet en laine et cachemire',
-        'Bonnet arc-en-ciel',
+        [
+            'nom_produit'   =>  'Bonnet en laine', 
+            'prix_produit'  =>  10,
+            'description_produit'   =>  $description
+        ],
+        [
+            'nom_produit'   =>  'Bonnet en laine bio', 
+            'prix_produit'  =>  14,
+            'description_produit'   =>  $description
+        ],
+        [
+            'nom_produit'   =>  'Bonnet en laine et cachemire', 
+            'prix_produit'  =>  20,
+            'description_produit'   =>  $description
+        ],
+        [
+            'nom_produit'   =>  'Bonnet arc-en-ciel', 
+            'prix_produit'  =>  12,
+            'description_produit'   =>  $description
+        ],
     ];
 ?>
 
@@ -21,6 +38,8 @@
     <table>
         <tr>
             <th>Produits</th>
+            <th>Prix</th>
+            <th>Descripion</th>
         </tr>
             <?php
                 foreach ($produits as $index => $produit) {
@@ -28,7 +47,17 @@
                     <tr>
                         <td>
             <?php
-                            echo $produit;
+                            echo $produit['nom_produit'];
+            ?>
+                        </td>
+                        <td>
+            <?php
+                            echo $produit['prix_produit'] . " €";
+            ?>
+                        </td>
+                        <td>
+            <?php
+                            echo $produit['description_produit'];
             ?>
                         </td>
                     </tr>
