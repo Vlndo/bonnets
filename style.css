@@ -1,6 +1,6 @@
 body,
 html {
-    width: 50%;
+    width: 100%;
     margin: auto;
     height: 100vh;
     display: flex;
@@ -13,4 +13,12 @@ tr,
 th,
 td {
     border: 1px solid black;
+}
+
+.green {
+    color: green;
+}
+
+.red {
+    color: red;
 }
