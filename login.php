@@ -3,10 +3,6 @@ $pageTitle = "Connexion";
 require_once 'includes/header.php';
 ?>
 
-<?php
-$_SESSION['username'] = $_POST['username'];
-?>
-
 <form action="" method="POST" class="row g-3">
     <div>
         <label for="username" class="form-label">Idantifiant</label>

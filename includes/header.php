@@ -5,7 +5,11 @@ require_once 'includes/functions.php';
 
 if(!isset($pageTitle)){
     $pageTitle = "Bienvenue ! ";
-};
+}
+
+if (isset($_POST['username'])) {
+    $_SESSION['username'] = $_POST['username'];
+}
 ?>
 
 <!DOCTYPE html>
@@ -30,11 +34,15 @@ if(!isset($pageTitle)){
 <?php
             if (isset($_SESSION['username'])) {
                 echo $_SESSION['username'];
+?>
+                <a class="navbar-brand" href="logout.php">Déconnexion</a>
+<?php
             } else {
                 echo "Connexion";
             }
 ?>
         </a>
+        
         </div>
     </nav>
     </div>
