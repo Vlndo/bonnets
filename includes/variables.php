@@ -26,4 +26,5 @@
             'img' => "bonnet4.jpg"
         ],
     ];
+    $mdp = 'toto';
 ?>

@@ -7,9 +7,6 @@ if(!isset($pageTitle)){
     $pageTitle = "Bienvenue ! ";
 }
 
-if (isset($_POST['username'])) {
-    $_SESSION['username'] = $_POST['username'];
-}
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +22,7 @@ if (isset($_POST['username'])) {
 </head>
 
 <body>
-    <div class="container">
+    <div class="col-12">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
         <a class="navbar-brand" href="index.php">Accueil</a>
@@ -45,4 +42,13 @@ if (isset($_POST['username'])) {
         
         </div>
     </nav>
+<?php 
+    if (isset($_GET['connexion']) && $_GET["connexion"] == "success") {
+?>
+        <div class="alert alert-success" role="alert">
+            <p>Bienvenue <?php echo $_SESSION['username']; ?></p>
+        </div>
+<?php
+    }
+?>
     </div>
