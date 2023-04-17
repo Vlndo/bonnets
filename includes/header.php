@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-
 <?php
+session_start();
 require_once 'includes/variables.php';
 require_once 'includes/functions.php';
 
@@ -9,6 +8,7 @@ if(!isset($pageTitle)){
 };
 ?>
 
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -28,8 +28,8 @@ if(!isset($pageTitle)){
         <a class="navbar-brand" href="list.php">Liste</a>
         <a class="navbar-brand" href="login.php">
 <?php
-            if (isset($_POST['username'])) {
-                echo $_POST['username'];
+            if (isset($_SESSION['username'])) {
+                echo $_SESSION['username'];
             } else {
                 echo "Connexion";
             }
