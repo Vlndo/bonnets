@@ -21,3 +21,11 @@ if(!isset($pageTitle)){
 </head>
 
 <body>
+    <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+        <a class="navbar-brand" href="index.php">Accueil</a>
+        <a class="navbar-brand" href="list.php">Liste</a>
+        </div>
+    </nav>
+    </div>
