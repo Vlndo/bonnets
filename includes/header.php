@@ -26,6 +26,15 @@ if(!isset($pageTitle)){
         <div class="container">
         <a class="navbar-brand" href="index.php">Accueil</a>
         <a class="navbar-brand" href="list.php">Liste</a>
+        <a class="navbar-brand" href="login.php">
+<?php
+            if (isset($_POST['username'])) {
+                echo $_POST['username'];
+            } else {
+                echo "Connexion";
+            }
+?>
+        </a>
         </div>
     </nav>
     </div>

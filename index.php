@@ -1,4 +1,5 @@
 <?php
+$pageTitle = "Accueil";
 require_once 'includes/header.php';
 $i = 0;
 ?>

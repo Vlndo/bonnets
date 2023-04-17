@@ -1,5 +1,5 @@
 <?php
-// $pageTitle = "Bienvenue !";
+$pageTitle = "Liste";
 require_once 'includes/header.php';
 ?>
 
