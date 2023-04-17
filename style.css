@@ -6,14 +6,19 @@ html {
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+body {
+    flex-direction: column;
 }
 
-table,
+/* table,
 tr,
 th,
 td {
     border: 1px solid black;
-}
+} */
 
 .green {
     color: green;
