@@ -12,15 +12,17 @@ if (isset($_POST["password"]) && isset($_POST["username"])) {
     }
     if (empty($errors)) {
         $_SESSION['username'] = $_POST['username'];
-        header("Location: index.php?connexion=success");
+        header("Location: index.php?page=home");
     }
 }
 foreach ($errors as $index => $error) {
-?>
+    ?>
     <div class="alert alert-danger" role="alert">
-        <p><?php echo $error; ?></p>
+        <p>
+            <?php echo $error; ?>
+        </p>
     </div>
-<?php
+    <?php
 }
 ?>
 
@@ -34,7 +36,7 @@ foreach ($errors as $index => $error) {
         <label for="password" class="form-label">Mot de passe</label>
         <input type="password" class="form-control" id="password" name="password">
     </div>
-        <button type="submit" class="btn btn-primary">Valider</button>
+    <button type="submit" class="btn btn-primary">Valider</button>
 </form>
 
 
