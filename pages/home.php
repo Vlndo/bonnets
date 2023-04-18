@@ -1,6 +1,5 @@
 <?php
 $pageTitle = "Accueil";
-require_once 'includes/header.php';
 $i = 0;
 ?>
 <div class="container-fluid d-flex p-5 col-12 justify-content-around">
@@ -17,7 +16,7 @@ $i = 0;
                 <h5 class="card-title">Card title</h5>
                 <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
                     content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+                <a href="#" class="btn btn-primary">Ajouter au panier</a>
             </div>
         </div>
         <?php
@@ -27,6 +26,3 @@ $i = 0;
 <div class="d-flex justify-content-center">
     <a href="?page=list" class="btn btn-primary">Voir tout</a>
 </div>
-<?php
-require_once 'includes/footer.php';
-?>

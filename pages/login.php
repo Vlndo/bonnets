@@ -1,6 +1,5 @@
 <?php
 $pageTitle = "Connexion";
-require_once 'includes/header.php';
 $errors = [];
 
 if (isset($_POST["password"]) && isset($_POST["username"])) {
@@ -38,8 +37,3 @@ foreach ($errors as $index => $error) {
     </div>
     <button type="submit" class="btn btn-primary">Valider</button>
 </form>
-
-
-<?php
-require_once 'includes/footer.php';
-?>
