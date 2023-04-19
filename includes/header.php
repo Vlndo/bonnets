@@ -33,6 +33,7 @@ if (!isset($pageTitle)) {
             <div class="container">
                 <a class="navbar-brand" href="?page=home">Accueil</a>
                 <a class="navbar-brand" href="?page=list">Liste</a>
+                <a class="navbar-brand" href="?page=panier">Panier</a>
                 <a class="navbar-brand" href="?page=login">
                     <?php
                     if (isset($_SESSION['username'])) {
