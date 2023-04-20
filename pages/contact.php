@@ -36,7 +36,7 @@ foreach ($errors as $index => $error) {
     </div>
     <div>
         <label for="mail" class="form-label">Email</label>
-        <input type="mail" class="form-control" id="mail" name="mail">
+        <input type="email" class="form-control" id="mail" name="mail">
     </div>
     <div>
         <label for="message" class="form-label">Message</label>

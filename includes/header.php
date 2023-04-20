@@ -35,7 +35,7 @@ if (!isset($pageTitle)) {
                 <a class="navbar-brand" href="?page=list">Liste</a>
                 <a class="navbar-brand" href="
                 <?php
-                if (isset($_GET['connexion']) && $_GET["connexion"] == "success") {
+                if (isset($_SESSION['username'])) {
                     ?>?page=contact
                     <?php
                 } else {

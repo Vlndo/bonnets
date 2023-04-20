@@ -9,13 +9,13 @@ $pageTitle = "Accueil";
         }
         ?>
         <div class="card" style="width: 18rem;">
-            <img src="img/<?php echo $produit["img"] ?>" class="card-img-top" alt="bonnet">
+            <img src="img/<?php echo $produit->getImg() ?>" class="card-img-top" alt="bonnet">
             <div class="card-body">
                 <h5 class="card-title">
-                    <?php echo $produit['nom_produit']; ?>
+                    <?php echo $produit->getNom(); ?>
                 </h5>
                 <p class="card-text">
-                    <?php echo $produit['description_produit']; ?>
+                    <?php echo $produit->getDescription(); ?>
                 </p>
                 <a href="?page=panier&id=<?php echo $id; ?>" class="btn btn-primary">Ajouter au panier</a>
             </div>

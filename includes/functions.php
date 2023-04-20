@@ -5,17 +5,17 @@ function tva($prix)
 }
 ;
 
-function addLine(int $id, array $produit): void
+function addLine(int $id, Beanie $produit): void
 {
     ?>
     <tr>
         <td>
             <?php
-            echo $produit['nom_produit'];
+            echo $produit->getNom();
             ?>
         </td>
         <td <?php
-        if ($produit['prix_produit'] <= 12) {
+        if ($produit->getPrix() <= 12) {
             echo "class = 'green'";
         } else {
             echo "class = 'blue'";
@@ -23,17 +23,17 @@ function addLine(int $id, array $produit): void
         ;
         ?>>
             <?php
-            echo $produit['prix_produit'] . " €";
+            echo $produit->getPrix() . " €";
             ?>
         </td>
         <td>
             <?php
-            echo number_format(tva($produit['prix_produit'])) . " €";
+            echo number_format(tva($produit->getPrix())) . " €";
             ?>
         </td>
         <td>
             <?php
-            echo $produit['description_produit'];
+            echo $produit->getDescription();
             ?>
         </td>
         <td>

@@ -58,12 +58,12 @@ $_SESSION['panier'] = $panier;
             <tr>
                 <td>
                     <?php
-                    echo $produit['nom_produit'];
+                    echo $produit->getNom();
                     ?>
                 </td>
                 <td>
                     <?php
-                    echo number_format(tva($produit['prix_produit'])) . " €";
+                    echo number_format(tva($produit->getPrix())) . " €";
                     ?>
                 </td>
                 <td>
@@ -75,7 +75,7 @@ $_SESSION['panier'] = $panier;
                 </td>
                 <td>
                     <?php
-                    echo number_format(tva($produit['prix_produit'])) * $panier[$id] . " €";
+                    echo number_format(tva($produit->getPrix())) * $panier[$id] . " €";
                     ?>
                 </td>
                 <td>
