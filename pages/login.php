@@ -11,7 +11,7 @@ if (isset($_POST["password"]) && isset($_POST["username"])) {
     }
     if (empty($errors)) {
         $_SESSION['username'] = $_POST['username'];
-        header("Location: index.php?page=home");
+        header("Location: index.php?page=home&connexion=success");
     }
 }
 foreach ($errors as $index => $error) {

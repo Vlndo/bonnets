@@ -33,6 +33,18 @@ if (!isset($pageTitle)) {
             <div class="container">
                 <a class="navbar-brand" href="?page=home">Accueil</a>
                 <a class="navbar-brand" href="?page=list">Liste</a>
+                <a class="navbar-brand" href="
+                <?php
+                if (isset($_GET['connexion']) && $_GET["connexion"] == "success") {
+                    ?>?page=contact
+                    <?php
+                } else {
+                    ?>
+                    ?page=login
+                    <?php
+                }
+                ?>
+                ">Contactez-nous</a>
                 <a class="navbar-brand" href="?page=panier">Panier</a>
                 <a class="navbar-brand" href="?page=login">
                     <?php
@@ -55,6 +67,15 @@ if (!isset($pageTitle)) {
             <div class="alert alert-success" role="alert">
                 <p>Bienvenue
                     <?php echo $_SESSION['username']; ?>
+                </p>
+            </div>
+            <?php
+        }
+        if (isset($_GET['contact']) && $_GET["contact"] == "success") {
+            ?>
+            <div class="alert alert-success" role="alert">
+                <p>Message envoyé, merci
+                    <?php echo $_SESSION['username']; ?> pour votre temps !
                 </p>
             </div>
             <?php
