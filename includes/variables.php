@@ -1,30 +1,36 @@
 <?php
-    $description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a leo diam. Quisque lorem orci, accumsan quis dolor sed, gravida.';
-    $produits = [
-        [
-            'nom_produit'   =>  'Bonnet en laine', 
-            'prix_produit'  =>  10,
-            'description_produit'   =>  $description,
-            'img' => "bonnet1.jpg"
-        ],
-        [
-            'nom_produit'   =>  'Bonnet en laine bio', 
-            'prix_produit'  =>  14,
-            'description_produit'   =>  $description,
-            'img' => "bonnet2.jpg"
-        ],
-        [
-            'nom_produit'   =>  'Bonnet en laine et cachemire', 
-            'prix_produit'  =>  20,
-            'description_produit'   =>  $description,
-            'img' => "bonnet3.jpg"
-        ],
-        [
-            'nom_produit'   =>  'Bonnet arc-en-ciel', 
-            'prix_produit'  =>  12,
-            'description_produit'   =>  $description,
-            'img' => "bonnet4.jpg"
-        ],
-    ];
-    $mdp = 'toto';
+require_once 'classes/Beanie.php';
+$description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a leo diam. Quisque lorem orci, accumsan quis dolor sed, gravida.';
+
+$bonnet = new Beanie();
+$bonnet->setNom('Bonnet en laine');
+$bonnet->setPrix('10');
+$bonnet->setDescription($description);
+$bonnet->setImg('bonnet1.jpg');
+
+$bonnet2 = new Beanie();
+$bonnet2->setNom('Bonnet en laine bio');
+$bonnet2->setPrix(14);
+$bonnet2->setDescription($description);
+$bonnet2->setImg("bonnet2.jpg");
+
+$bonnet3 = new Beanie();
+$bonnet3->setNom('Bonnet en laine et cachemire');
+$bonnet3->setPrix(20);
+$bonnet3->setDescription($description);
+$bonnet3->setImg('bonnet3.jpg');
+
+$bonnet4 = new Beanie();
+$bonnet4->setNom('Bonnet arc-en-ciel');
+$bonnet4->setPrix(12);
+$bonnet4->setDescription($description);
+$bonnet4->setImg('bonnet4.jpg');
+
+$produits = [
+    $bonnet,
+    $bonnet2,
+    $bonnet3,
+    $bonnet4
+];
+$mdp = 'toto';
 ?>
