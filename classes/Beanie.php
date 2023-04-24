@@ -2,11 +2,17 @@
 
 class Beanie
 {
+
     protected string $nom;
     protected float $prix;
     protected string $description;
     protected string $img;
+    protected array $tailles = [];
+    protected array $matieres = [];
+    protected int $index;
 
+    public const TAILLES = ['S', 'M', 'L', 'XL'];
+    public const MATIERE = ['laine', 'soie', 'coton', 'cachemire'];
 
 
     public function getNom(): string
@@ -50,6 +56,39 @@ class Beanie
     public function setImg(string $img): self
     {
         $this->img = $img;
+        return $this;
+    }
+
+    public function getTailles(): array
+    {
+        return $this->tailles;
+    }
+
+    public function setTailles(array $tailles): self
+    {
+        $this->tailles = $tailles;
+        return $this;
+    }
+
+    public function getMatieres(): array
+    {
+        return $this->matieres;
+    }
+
+    public function setMatieres(array $matieres): self
+    {
+        $this->matieres = $matieres;
+        return $this;
+    }
+
+    public function getIndex(): int
+    {
+        return $this->index;
+    }
+
+    public function setIndex(int $index): self
+    {
+        $this->index = $index;
         return $this;
     }
 }
