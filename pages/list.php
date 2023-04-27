@@ -1,8 +1,14 @@
 <?php
 $pageTitle = "Liste";
 
+$prixMini = null;
+$prixMaxi = null;
+$matiere = null;
+$taille = null;
+
 if (!empty($_POST['prixMini'])) {
     $prixMini = floatval($_POST['prixMini']);
+
     $produits = array_filter($produits, function (Beanie $bonnet) use ($prixMini) {
         return $bonnet->getPrix() >= $prixMini;
     });

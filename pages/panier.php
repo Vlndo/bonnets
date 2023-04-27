@@ -1,47 +1,10 @@
 <?php
+$panier = new Panier();
 
-if (!isset($_SESSION['panier'])) {
-    $_SESSION['panier'] = [];
-}
-
-$panier = $_SESSION['panier'];
-
-if (!isset($_GET['mode']) || $_GET['mode'] == 'plus') {
-    $mode = 'plus';
-} elseif (isset($_GET['mode']) && $_GET['mode'] == 'moins') {
-    $mode = 'moins';
-} elseif (isset($_GET['mode']) && $_GET['mode'] == 'delete') {
-    $mode = 'delete';
-} elseif (isset($_GET['mode']) && $_GET['mode'] == 'delete-line') {
-    $mode = 'delete-line';
-}
-
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-
-    if (!isset($panier[$id])) {
-        $panier[$id] = 0;
-    }
-
-    if ($mode == 'plus') {
-        $panier[$id]++;
-    } elseif ($mode == 'delete-line') {
-        unset($panier[$id]);
-    } elseif ($mode == 'moins') {
-        $panier[$id]--;
-        if ($panier[$id] <= 0) {
-            unset($panier[$id]);
-        }
-    }
-
+$isPanierModifie = $panier->handle($_GET);
+if ($isPanierModifie) {
     header('location:?page=panier');
 }
-
-if ($mode == 'delete') {
-    $panier = [];
-}
-
-$_SESSION['panier'] = $panier;
 
 ?>
 <table class="table">
@@ -52,8 +15,9 @@ $_SESSION['panier'] = $panier;
         <th>Prix total</th>
     </tr>
     <?php
-    foreach ($produits as $id => $produit) {
-        if (isset($panier[$id])) {
+    foreach ($panier->getContent() as $id => $quantite) {
+        if (isset($produits[$id])) {
+            $produit = $produits[$id];
             ?>
             <tr>
                 <td>
@@ -69,13 +33,13 @@ $_SESSION['panier'] = $panier;
                 <td>
                     <a href="?page=panier&id=<?php echo $id; ?>&mode=moins">-</a>
                     <?php
-                    echo $panier[$id];
+                    echo $quantite;
                     ?>
                     <a href="?page=panier&id=<?php echo $id; ?>&mode=plus">+</a>
                 </td>
                 <td>
                     <?php
-                    echo number_format(tva($produit->getPrix())) * $panier[$id] . " €";
+                    echo number_format(tva($produit->getPrix())) * $quantite . " €";
                     ?>
                 </td>
                 <td>
@@ -89,4 +53,4 @@ $_SESSION['panier'] = $panier;
     }
     ?>
 </table>
-<a class="btn btn-primary" href="?page=panier&mode=delete">Vider panier</a>
+<a class="btn btn-primary" href="?page=panier&mode=empty">Vider panier</a>

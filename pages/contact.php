@@ -1,24 +1,15 @@
 <?php
-$errors = [];
+$contact = new Contact($_POST);
 
-if (isset($_POST["sujet"]) && isset($_POST["sujet"])) {
-    if (empty($_POST['sujet'])) {
-        $errors[] = "Veuillez remplir le champ 'sujet'.";
-    }
-    if (empty($_POST["mail"]) || !filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL)) {
-        $errors[] = "Entrez un mail valide";
-    }
-    if (empty($_POST['message'])) {
-        $errors[] = "Veuillez remplir le champ 'message'.";
-    }
-    if (empty($errors)) {
-        $_SESSION['sujet'] = $_POST['sujet'];
-        $_SESSION['mail'] = $_POST['mail'];
-        $_SESSION['message'] = $_POST['message'];
-        header("Location: index.php?page=home&contact=success");
-    }
+if ($contact->isSubmitted() && $contact->isValid()) {
+    $_SESSION['sujet'] = $_POST['sujet'];
+    $_SESSION['mail'] = $_POST['mail'];
+    $_SESSION['message'] = $_POST['message'];
+    header("Location: index.php?page=home&contact=success");
 }
-foreach ($errors as $index => $error) {
+
+
+foreach ($contact->getErrors() as $error) {
     ?>
     <div class="alert alert-danger" role="alert">
         <p>
@@ -32,11 +23,11 @@ foreach ($errors as $index => $error) {
 <form action="" method="POST" class="row g-3">
     <div>
         <label for="sujet" class="form-label">Sujet</label>
-        <input type="text" class="form-control" id="sujet" name="sujet">
+        <input type="text" class="form-control" id="sujet" name="sujet" value="<?php echo $contact->getSujet(); ?>">
     </div>
     <div>
         <label for="mail" class="form-label">Email</label>
-        <input type="email" class="form-control" id="mail" name="mail">
+        <input type="email" class="form-control" id="mail" name="mail" value="<?php echo $contact->getMail(); ?>">
     </div>
     <div>
         <label for="message" class="form-label">Message</label>

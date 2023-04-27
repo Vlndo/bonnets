@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once 'includes/autoload.php';
 require_once 'includes/variables.php';
 require_once 'includes/functions.php';
 
@@ -71,7 +72,7 @@ if (!isset($pageTitle)) {
             </div>
             <?php
         }
-        if (isset($_GET['contact']) && $_GET["contact"] == "success") {
+        if (isset($_GET['contact']) && $_GET["contact"] == "success" && isset($_GET['message']) && empty($errors)) {
             ?>
             <div class="alert alert-success" role="alert">
                 <p>Message envoyé, merci
