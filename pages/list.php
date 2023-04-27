@@ -5,33 +5,7 @@ $prixMini = null;
 $prixMaxi = null;
 $matiere = null;
 $taille = null;
-
-if (!empty($_POST['prixMini'])) {
-    $prixMini = floatval($_POST['prixMini']);
-
-    $produits = array_filter($produits, function (Beanie $bonnet) use ($prixMini) {
-        return $bonnet->getPrix() >= $prixMini;
-    });
-}
-
-if (!empty($_POST['prixMaxi'])) {
-    $prixMaxi = floatval($_POST['prixMaxi']);
-    $produits = array_filter($produits, function (Beanie $bonnet) use ($prixMaxi) {
-        return $bonnet->getPrix() <= $prixMaxi;
-    });
-}
-
-if (!empty($_POST['taille'])) {
-    $produits = array_filter($produits, function (Beanie $bonnet) {
-        return in_array($_POST['taille'], $bonnet->getTailles());
-    });
-}
-
-if (!empty($_POST['matiere'])) {
-    $produits = array_filter($produits, function (Beanie $bonnet) {
-        return in_array($_POST['matiere'], $bonnet->getMatieres());
-    });
-}
+$filtre = new BeanieFilter($_POST, $produits);
 
 ?>
 
@@ -88,8 +62,8 @@ if (!empty($_POST['matiere'])) {
 
     </tr>
     <?php
-    foreach ($produits as $index => $produit) {
-        addLine($index, $produit);
+    foreach ($filtre->getBonnetFiltre() as $id => $produit) {
+        addLine($id, $produit);
     }
     ?>
 </table>
