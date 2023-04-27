@@ -1,5 +1,10 @@
 <?php
-require_once 'classes/Beanie.php';
+require_once 'config.inc.php';
+
+spl_autoload_register(function ($class) {
+    require_once "../classes/$class.php";
+});
+
 $description = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis a leo diam. Quisque lorem orci, accumsan quis dolor sed, gravida.';
 
 $bonnet = new Beanie();
@@ -42,5 +47,21 @@ $produits = [
     $bonnet4
 ];
 
-$mdp = 'toto';
+$sql = "INSERT INTO `beanie`(`nom`, `prix`, `description`, `image`, `tailles`, `matieres`) VALUES (:nom, :prix, :description, :image, :tailles, :matieres) ";
+
+$statement = $connection->prepare($sql);
+
+foreach ($produits as $produit) {
+
+    $statement->bindValue(':nom', $produit->getNom(), PDO::PARAM_STR);
+    $statement->bindValue(':prix', $produit->getPrix(), PDO::PARAM_INT);
+    $statement->bindValue(':description', $produit->getDescription(), PDO::PARAM_STR);
+    $statement->bindValue(':image', $produit->getImg(), PDO::PARAM_STR);
+    $statement->bindValue(':tailles', json_encode($produit->getTailles()), PDO::PARAM_STR);
+    $statement->bindValue(':matieres', json_encode($produit->getMatieres()), PDO::PARAM_STR);
+
+    $statement->execute();
+
+}
+
 ?>

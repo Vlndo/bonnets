@@ -3,6 +3,7 @@ session_start();
 require_once 'includes/autoload.php';
 require_once 'includes/variables.php';
 require_once 'includes/functions.php';
+require_once 'includes/config.inc.php';
 
 if (!isset($pageTitle)) {
     $pageTitle = "Bienvenue ! ";
