@@ -1,10 +1,23 @@
 <?php
 $contact = new Contact($_POST);
 
+var_dump($_POST);
+
+$sql = 'INSERT INTO `contact`(`sujet`, `mail`, `message`) VALUES (:sujet, :mail, :message)';
+
+$statement = $connection->prepare($sql);
+
+$statement->bindValue(':sujet', $_POST['sujet'], PDO::PARAM_STR);
+$statement->bindValue(':mail', $_POST['mail'], PDO::PARAM_STR);
+$statement->bindValue(':message', $_POST['message'], PDO::PARAM_STR);
+
+
+
 if ($contact->isSubmitted() && $contact->isValid()) {
     $_SESSION['sujet'] = $_POST['sujet'];
     $_SESSION['mail'] = $_POST['mail'];
     $_SESSION['message'] = $_POST['message'];
+    $statement->execute();
     header("Location: index.php?page=home&contact=success");
 }
 
